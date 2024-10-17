@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator
+CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator/src
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/rami/CProjects/VMTranslator/build
@@ -70,18 +70,18 @@ include Parser/CMakeFiles/Parser.dir/progress.make
 include Parser/CMakeFiles/Parser.dir/flags.make
 
 Parser/CMakeFiles/Parser.dir/src/parser.c.o: Parser/CMakeFiles/Parser.dir/flags.make
-Parser/CMakeFiles/Parser.dir/src/parser.c.o: /home/rami/CProjects/VMTranslator/Parser/src/parser.c
+Parser/CMakeFiles/Parser.dir/src/parser.c.o: /home/rami/CProjects/VMTranslator/src/Parser/src/parser.c
 Parser/CMakeFiles/Parser.dir/src/parser.c.o: Parser/CMakeFiles/Parser.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rami/CProjects/VMTranslator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object Parser/CMakeFiles/Parser.dir/src/parser.c.o"
-	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT Parser/CMakeFiles/Parser.dir/src/parser.c.o -MF CMakeFiles/Parser.dir/src/parser.c.o.d -o CMakeFiles/Parser.dir/src/parser.c.o -c /home/rami/CProjects/VMTranslator/Parser/src/parser.c
+	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT Parser/CMakeFiles/Parser.dir/src/parser.c.o -MF CMakeFiles/Parser.dir/src/parser.c.o.d -o CMakeFiles/Parser.dir/src/parser.c.o -c /home/rami/CProjects/VMTranslator/src/Parser/src/parser.c
 
 Parser/CMakeFiles/Parser.dir/src/parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Parser.dir/src/parser.c.i"
-	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/Parser/src/parser.c > CMakeFiles/Parser.dir/src/parser.c.i
+	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/src/Parser/src/parser.c > CMakeFiles/Parser.dir/src/parser.c.i
 
 Parser/CMakeFiles/Parser.dir/src/parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Parser.dir/src/parser.c.s"
-	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/Parser/src/parser.c -o CMakeFiles/Parser.dir/src/parser.c.s
+	cd /home/rami/CProjects/VMTranslator/build/Parser && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/src/Parser/src/parser.c -o CMakeFiles/Parser.dir/src/parser.c.s
 
 # Object files for target Parser
 Parser_OBJECTS = \
@@ -106,6 +106,6 @@ Parser/CMakeFiles/Parser.dir/clean:
 .PHONY : Parser/CMakeFiles/Parser.dir/clean
 
 Parser/CMakeFiles/Parser.dir/depend:
-	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator /home/rami/CProjects/VMTranslator/Parser /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/Parser /home/rami/CProjects/VMTranslator/build/Parser/CMakeFiles/Parser.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator/src /home/rami/CProjects/VMTranslator/src/Parser /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/Parser /home/rami/CProjects/VMTranslator/build/Parser/CMakeFiles/Parser.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : Parser/CMakeFiles/Parser.dir/depend
 

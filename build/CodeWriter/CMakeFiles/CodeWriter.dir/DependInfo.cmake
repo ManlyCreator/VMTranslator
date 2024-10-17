@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rami/CProjects/VMTranslator/CodeWriter/src/codeWriter.c" "CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o" "gcc" "CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o.d"
+  "/home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c" "CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o" "gcc" "CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

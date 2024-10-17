@@ -1,5 +1,5 @@
 CMakeFiles/VMTranslator.dir/main.c.o: \
- /home/rami/CProjects/VMTranslator/main.c /usr/include/stdc-predef.h \
+ /home/rami/CProjects/VMTranslator/src/main.c /usr/include/stdc-predef.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -24,5 +24,5 @@ CMakeFiles/VMTranslator.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /home/rami/CProjects/VMTranslator/Parser/include/parser.h \
- /home/rami/CProjects/VMTranslator/CodeWriter/include/codeWriter.h
+ /home/rami/CProjects/VMTranslator/src/Parser/include/parser.h \
+ /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h

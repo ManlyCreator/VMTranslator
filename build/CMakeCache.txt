@@ -222,7 +222,7 @@ VMTranslator_BINARY_DIR:STATIC=/home/rami/CProjects/VMTranslator/build
 VMTranslator_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-VMTranslator_SOURCE_DIR:STATIC=/home/rami/CProjects/VMTranslator
+VMTranslator_SOURCE_DIR:STATIC=/home/rami/CProjects/VMTranslator/src
 
 
 ########################
@@ -309,7 +309,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/rami/CProjects/VMTranslator
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/rami/CProjects/VMTranslator/src
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

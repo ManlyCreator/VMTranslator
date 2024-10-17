@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator
+CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator/src
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/rami/CProjects/VMTranslator/build
@@ -70,18 +70,18 @@ include CMakeFiles/VMTranslator.dir/progress.make
 include CMakeFiles/VMTranslator.dir/flags.make
 
 CMakeFiles/VMTranslator.dir/main.c.o: CMakeFiles/VMTranslator.dir/flags.make
-CMakeFiles/VMTranslator.dir/main.c.o: /home/rami/CProjects/VMTranslator/main.c
+CMakeFiles/VMTranslator.dir/main.c.o: /home/rami/CProjects/VMTranslator/src/main.c
 CMakeFiles/VMTranslator.dir/main.c.o: CMakeFiles/VMTranslator.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rami/CProjects/VMTranslator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/VMTranslator.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/VMTranslator.dir/main.c.o -MF CMakeFiles/VMTranslator.dir/main.c.o.d -o CMakeFiles/VMTranslator.dir/main.c.o -c /home/rami/CProjects/VMTranslator/main.c
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/VMTranslator.dir/main.c.o -MF CMakeFiles/VMTranslator.dir/main.c.o.d -o CMakeFiles/VMTranslator.dir/main.c.o -c /home/rami/CProjects/VMTranslator/src/main.c
 
 CMakeFiles/VMTranslator.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/VMTranslator.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/main.c > CMakeFiles/VMTranslator.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/src/main.c > CMakeFiles/VMTranslator.dir/main.c.i
 
 CMakeFiles/VMTranslator.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/VMTranslator.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/main.c -o CMakeFiles/VMTranslator.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/src/main.c -o CMakeFiles/VMTranslator.dir/main.c.s
 
 # Object files for target VMTranslator
 VMTranslator_OBJECTS = \
@@ -107,6 +107,6 @@ CMakeFiles/VMTranslator.dir/clean:
 .PHONY : CMakeFiles/VMTranslator.dir/clean
 
 CMakeFiles/VMTranslator.dir/depend:
-	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator /home/rami/CProjects/VMTranslator /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/CMakeFiles/VMTranslator.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator/src /home/rami/CProjects/VMTranslator/src /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/CMakeFiles/VMTranslator.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/VMTranslator.dir/depend
 

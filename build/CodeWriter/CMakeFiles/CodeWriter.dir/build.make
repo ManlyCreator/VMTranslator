@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator
+CMAKE_SOURCE_DIR = /home/rami/CProjects/VMTranslator/src
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/rami/CProjects/VMTranslator/build
@@ -70,18 +70,18 @@ include CodeWriter/CMakeFiles/CodeWriter.dir/progress.make
 include CodeWriter/CMakeFiles/CodeWriter.dir/flags.make
 
 CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: CodeWriter/CMakeFiles/CodeWriter.dir/flags.make
-CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VMTranslator/CodeWriter/src/codeWriter.c
+CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c
 CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: CodeWriter/CMakeFiles/CodeWriter.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rami/CProjects/VMTranslator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o"
-	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -MF CMakeFiles/CodeWriter.dir/src/codeWriter.c.o.d -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -c /home/rami/CProjects/VMTranslator/CodeWriter/src/codeWriter.c
+	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -MF CMakeFiles/CodeWriter.dir/src/codeWriter.c.o.d -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -c /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c
 
 CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CodeWriter.dir/src/codeWriter.c.i"
-	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/CodeWriter/src/codeWriter.c > CMakeFiles/CodeWriter.dir/src/codeWriter.c.i
+	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c > CMakeFiles/CodeWriter.dir/src/codeWriter.c.i
 
 CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CodeWriter.dir/src/codeWriter.c.s"
-	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/CodeWriter/src/codeWriter.c -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.s
+	cd /home/rami/CProjects/VMTranslator/build/CodeWriter && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.s
 
 # Object files for target CodeWriter
 CodeWriter_OBJECTS = \
@@ -106,6 +106,6 @@ CodeWriter/CMakeFiles/CodeWriter.dir/clean:
 .PHONY : CodeWriter/CMakeFiles/CodeWriter.dir/clean
 
 CodeWriter/CMakeFiles/CodeWriter.dir/depend:
-	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator /home/rami/CProjects/VMTranslator/CodeWriter /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/CodeWriter /home/rami/CProjects/VMTranslator/build/CodeWriter/CMakeFiles/CodeWriter.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/rami/CProjects/VMTranslator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rami/CProjects/VMTranslator/src /home/rami/CProjects/VMTranslator/src/CodeWriter /home/rami/CProjects/VMTranslator/build /home/rami/CProjects/VMTranslator/build/CodeWriter /home/rami/CProjects/VMTranslator/build/CodeWriter/CMakeFiles/CodeWriter.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CodeWriter/CMakeFiles/CodeWriter.dir/depend
 

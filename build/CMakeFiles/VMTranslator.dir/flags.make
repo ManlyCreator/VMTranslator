@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/rami/CProjects/VMTranslator/Parser/include -I/home/rami/CProjects/VMTranslator/CodeWriter/include
+C_INCLUDES = -I/home/rami/CProjects/VMTranslator/src/Parser/include -I/home/rami/CProjects/VMTranslator/src/CodeWriter/include
 
 C_FLAGS = -g
 

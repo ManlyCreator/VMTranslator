@@ -1,4 +1,4 @@
-# Install script for directory: /home/rami/CProjects/VMTranslator
+# Install script for directory: /home/rami/CProjects/VMTranslator/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

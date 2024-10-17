@@ -1,4 +1,4 @@
-# Install script for directory: /home/rami/CProjects/VMTranslator/CodeWriter
+# Install script for directory: /home/rami/CProjects/VMTranslator/src/CodeWriter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
