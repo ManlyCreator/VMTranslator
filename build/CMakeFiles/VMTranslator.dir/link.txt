@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/VMTranslator.dir/main.c.o -o VMTranslator  Parser/libParser.a CodeWriter/libCodeWriter.a 

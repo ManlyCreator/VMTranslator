@@ -1,0 +1,2 @@
+/usr/bin/ar qc libCodeWriter.a CMakeFiles/CodeWriter.dir/src/codeWriter.c.o
+/usr/bin/ranlib libCodeWriter.a

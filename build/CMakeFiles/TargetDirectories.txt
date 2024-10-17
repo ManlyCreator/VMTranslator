@@ -1,0 +1,9 @@
+/home/rami/CProjects/VMTranslator/build/CMakeFiles/VMTranslator.dir
+/home/rami/CProjects/VMTranslator/build/CMakeFiles/edit_cache.dir
+/home/rami/CProjects/VMTranslator/build/CMakeFiles/rebuild_cache.dir
+/home/rami/CProjects/VMTranslator/build/Parser/CMakeFiles/Parser.dir
+/home/rami/CProjects/VMTranslator/build/Parser/CMakeFiles/edit_cache.dir
+/home/rami/CProjects/VMTranslator/build/Parser/CMakeFiles/rebuild_cache.dir
+/home/rami/CProjects/VMTranslator/build/CodeWriter/CMakeFiles/CodeWriter.dir
+/home/rami/CProjects/VMTranslator/build/CodeWriter/CMakeFiles/edit_cache.dir
+/home/rami/CProjects/VMTranslator/build/CodeWriter/CMakeFiles/rebuild_cache.dir
