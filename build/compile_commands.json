@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/rami/CProjects/VMTranslator/build",
-  "command": "/usr/bin/cc  -I/home/rami/CProjects/VMTranslator/src/Parser/include -I/home/rami/CProjects/VMTranslator/src/CodeWriter/include -g -o CMakeFiles/VMTranslator.dir/main.c.o -c /home/rami/CProjects/VMTranslator/src/main.c",
+  "command": "/usr/bin/cc  -I/home/rami/CProjects/VMTranslator/src/Parser/include -I/home/rami/CProjects/VMTranslator/src/CodeWriter/include -I/home/rami/CProjects/VMTranslator/src/CodeWriter/../Parser/include -g -o CMakeFiles/VMTranslator.dir/main.c.o -c /home/rami/CProjects/VMTranslator/src/main.c",
   "file": "/home/rami/CProjects/VMTranslator/src/main.c",
   "output": "CMakeFiles/VMTranslator.dir/main.c.o"
 },
@@ -13,7 +13,7 @@
 },
 {
   "directory": "/home/rami/CProjects/VMTranslator/build/CodeWriter",
-  "command": "/usr/bin/cc  -I/home/rami/CProjects/VMTranslator/src/CodeWriter/include -g -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -c /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c",
+  "command": "/usr/bin/cc  -I/home/rami/CProjects/VMTranslator/src/CodeWriter/include -I/home/rami/CProjects/VMTranslator/src/CodeWriter/../Parser/include -g -o CMakeFiles/CodeWriter.dir/src/codeWriter.c.o -c /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c",
   "file": "/home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c",
   "output": "CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o"
 }

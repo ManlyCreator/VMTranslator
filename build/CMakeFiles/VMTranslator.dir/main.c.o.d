@@ -25,4 +25,8 @@ CMakeFiles/VMTranslator.dir/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /home/rami/CProjects/VMTranslator/src/Parser/include/parser.h \
- /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h
+ /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h \
+ /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+ /usr/include/strings.h
