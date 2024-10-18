@@ -37,7 +37,7 @@ char stackOperations[9][BUFSIZE] = {
     "A=A-1\n"
     "M=-M\n"
   },
-  // [3] EQ
+  // [3] CONDITIONAL
   {
     "@SP\n"
     "A=M\n"
@@ -45,84 +45,6 @@ char stackOperations[9][BUFSIZE] = {
     "D=M\n"
     "A=A-1\n"
     "D=M-D\n"
-    "@EQ\n"
-    "D;JEQ\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(EQ)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
-  },
-  // [4] GT
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=M-D\n"
-    "@GT\n"
-    "D;JGT\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(GT)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
-  },
-  // [5] LT
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=M-D\n"
-    "@LT\n"
-    "D;JLT\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(LT)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
   },
   // [6] AND
   {
