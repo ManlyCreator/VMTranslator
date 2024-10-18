@@ -13,7 +13,6 @@
 #define OR 7
 #define NOT 8
 
-
 // (Function signatures subject to change)
 // Iterates through each command in the linked list
 void translateFile(FILE* dest, command* listStart);

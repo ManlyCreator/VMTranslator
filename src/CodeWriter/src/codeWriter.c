@@ -3,10 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Move stack operations over to header file
-// TODO: Implement logical operations
+// TODO: Differentiate between copies of labels
 // TODO: Implement memory segments
 // TODO: Implement pop
+
 char stackOperations[9][BUFSIZE] = {
   // [0] ADD
   {
@@ -39,23 +39,90 @@ char stackOperations[9][BUFSIZE] = {
   },
   // [3] EQ
   {
-    // TODO: Use JEQ to branch to the correct output
     "@SP\n"
     "A=M\n"
     "A=A-1\n"
     "D=M\n"
     "A=A-1\n"
     "D=M-D\n"
+    "@EQ\n"
+    "D;JEQ\n"
+
     "@SP\n"
     "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=0\n"
+    "@END\n"
+    "0;JMP\n"
+
+    "(EQ)\n"
+    "@SP\n"
+    "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=-1\n"
+
+    "(END)\n"
+    "@END\n"
   },
   // [4] GT
   {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "D=M-D\n"
+    "@GT\n"
+    "D;JGT\n"
 
+    "@SP\n"
+    "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=0\n"
+    "@END\n"
+    "0;JMP\n"
+
+    "(GT)\n"
+    "@SP\n"
+    "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=-1\n"
+
+    "(END)\n"
+    "@END\n"
   },
   // [5] LT
   {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "D=M-D\n"
+    "@LT\n"
+    "D;JLT\n"
 
+    "@SP\n"
+    "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=0\n"
+    "@END\n"
+    "0;JMP\n"
+
+    "(LT)\n"
+    "@SP\n"
+    "M=M-1\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=-1\n"
+
+    "(END)\n"
+    "@END\n"
   },
   // [6] AND
   {
