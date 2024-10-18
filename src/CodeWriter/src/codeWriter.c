@@ -1,9 +1,9 @@
 #include <codeWriter.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Differentiate between copies of labels
 // TODO: Implement memory segments
 // TODO: Implement pop
 
@@ -37,7 +37,7 @@ char stackOperations[9][BUFSIZE] = {
     "A=A-1\n"
     "M=-M\n"
   },
-  // [3] EQ
+  // [3] CONDITIONAL
   {
     "@SP\n"
     "A=M\n"
@@ -45,86 +45,8 @@ char stackOperations[9][BUFSIZE] = {
     "D=M\n"
     "A=A-1\n"
     "D=M-D\n"
-    "@EQ\n"
-    "D;JEQ\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(EQ)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
   },
-  // [4] GT
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=M-D\n"
-    "@GT\n"
-    "D;JGT\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(GT)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
-  },
-  // [5] LT
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=M-D\n"
-    "@LT\n"
-    "D;JLT\n"
-
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=0\n"
-    "@END\n"
-    "0;JMP\n"
-
-    "(LT)\n"
-    "@SP\n"
-    "M=M-1\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-1\n"
-
-    "(END)\n"
-    "@END\n"
-  },
-  // [6] AND
+  // [4] AND
   {
     "@SP\n"
     "A=M\n"
@@ -132,11 +54,11 @@ char stackOperations[9][BUFSIZE] = {
     "D=M\n"
     "A=A-1\n"
     "D=D&M\n"
-    "M=-D\n"
+    "M=D\n"
     "@SP\n"
     "M=M-1\n"
   },
-  // [7] OR
+  // [5] OR
   {
     "@SP\n"
     "A=M\n"
@@ -144,11 +66,11 @@ char stackOperations[9][BUFSIZE] = {
     "D=M\n"
     "A=A-1\n"
     "D=D|M\n"
-    "M=-D\n"
+    "M=D\n"
     "@SP\n"
     "M=M-1\n"
   },
-  // [8] NOT
+  // [6] NOT
   {
     "@SP\n"
     "A=M\n"
@@ -159,9 +81,11 @@ char stackOperations[9][BUFSIZE] = {
 
 void translateFile(FILE* dest, command* listStart) {
   command* temp = listStart;
+  int instructionCounter = 0;
   while (temp->next) {
+    instructionCounter++;
     char instruction[BUFSIZE];
-    translateCommand(instruction, temp);
+    translateCommand(instruction, temp, instructionCounter);
     fprintf(
         dest,
         "// %s %s %s\n"
@@ -172,7 +96,7 @@ void translateFile(FILE* dest, command* listStart) {
   }
 }
 
-void translateCommand(char* instructionBuffer, command* currentCommand) {
+void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber) {
   if (strcmp(currentCommand->type, "push") == 0) {
     // TODO: Create a function that retrieves the value 
     // from a memory segment
@@ -198,11 +122,11 @@ void translateCommand(char* instructionBuffer, command* currentCommand) {
     } else if (strcmp(currentCommand->type, "neg") == 0) {
       operationIdx = NEG;
     } else if (strcmp(currentCommand->type, "eq") == 0) {
-      operationIdx = EQ;
+      operationIdx = CONDITIONAL;
     } else if (strcmp(currentCommand->type, "gt") == 0) {
-      operationIdx = GT;
+      operationIdx = CONDITIONAL;
     } else if (strcmp(currentCommand->type, "lt") == 0) {
-      operationIdx = LT;
+      operationIdx = CONDITIONAL;
     } else if (strcmp(currentCommand->type, "and") == 0) {
       operationIdx = AND;
     } else if (strcmp(currentCommand->type, "or") == 0) {
@@ -210,6 +134,43 @@ void translateCommand(char* instructionBuffer, command* currentCommand) {
     } else if (strcmp(currentCommand->type, "not") == 0) {
       operationIdx = NOT;
     }
-    sprintf(instructionBuffer, "%s", stackOperations[operationIdx]);
+    if (operationIdx == CONDITIONAL) {
+      int len = strlen(currentCommand->type);
+      char operation[len];
+      for (int i = 0; i < len; i++) {
+        operation[i] = toupper(currentCommand->type[i]);
+      }
+      operation[len] = '\0';
+      sprintf(
+          instructionBuffer,
+          "%s"
+          "@%s%d\n"
+          "D;J%s\n"
+          "@SP\n"
+          "M=M-1\n"
+          "A=M\n"
+          "A=A-1\n"
+          "M=0\n"
+          "@END%d\n"
+          "0;JMP\n"
+          "(%s%d)\n"
+          "@SP\n"
+          "M=M-1\n"
+          "A=M\n"
+          "A=A-1\n"
+          "M=-1\n"
+          "(END%d)\n",
+          stackOperations[operationIdx],
+          operation,
+          instructionNumber,
+          operation,
+          instructionNumber,
+          operation,
+          instructionNumber,
+          instructionNumber
+      );
+    } else {
+      sprintf(instructionBuffer, "%s", stackOperations[operationIdx]);
+    }
   }
 }
