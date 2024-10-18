@@ -6,6 +6,7 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o
  /home/rami/CProjects/VMTranslator/src/Parser/include/parser.h
  /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h
  /usr/include/alloca.h
+ /usr/include/ctype.h
  /usr/include/endian.h
  /usr/include/features-time64.h
  /usr/include/features.h

@@ -5,6 +5,7 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
   /home/rami/CProjects/VMTranslator/src/Parser/include/parser.h \
   /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h \
   /usr/include/alloca.h \
+  /usr/include/ctype.h \
   /usr/include/endian.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
@@ -66,11 +67,11 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 
+/usr/include/x86_64-linux-gnu/sys/types.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
@@ -87,6 +88,10 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
+
+/usr/include/x86_64-linux-gnu/bits/types.h:
+
+/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
@@ -120,10 +125,6 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/x86_64-linux-gnu/bits/types.h:
-
-/usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
-
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
@@ -146,9 +147,13 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
 
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
+/usr/include/ctype.h:
+
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
@@ -177,8 +182,6 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: /home/rami/CProjects/VM
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
-
-/usr/include/x86_64-linux-gnu/sys/types.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
