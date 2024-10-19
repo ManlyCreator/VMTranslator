@@ -7,6 +7,9 @@
 // TODO: Implement memory segments
 // TODO: Implement pop
 
+char memorySegments[7][BUFSIZE] = {
+  "LCL", "ARG", "THIS", "THAT", "5" 
+};
 char stackOperations[9][BUFSIZE] = {
   // [0] ADD
   {
@@ -100,19 +103,35 @@ void translateCommand(char* instructionBuffer, command* currentCommand, int inst
   if (strcmp(currentCommand->type, "push") == 0) {
     // TODO: Create a function that retrieves the value 
     // from a memory segment
+    char instruction[BUFSIZE];
+    pushValue(currentCommand, instruction);
     sprintf(
         instructionBuffer,
-        "@%d\n"
-        "D=A\n"
+        "%s"
         "@SP\n"
         "A=M\n"
         "M=D\n"
         "@SP\n"
         "M=M+1\n",
-        atoi(currentCommand->value)
+        instruction
     );
   } else if (strcmp(currentCommand->type, "pop") == 0) {
-
+    char instruction[BUFSIZE];
+    popValue(currentCommand, instruction);
+    sprintf(
+        instructionBuffer,
+        "%s"
+        "@addr\n"
+        "M=D\n"
+        "@SP\n"
+        "M=M-1\n"
+        "A=M\n"
+        "D=M\n"
+        "@addr\n"
+        "A=M\n"
+        "M=D\n",
+        instruction
+    );
   } else {
     int operationIdx = 0;
     if (strcmp(currentCommand->type, "add") == 0) {
@@ -173,4 +192,80 @@ void translateCommand(char* instructionBuffer, command* currentCommand, int inst
       sprintf(instructionBuffer, "%s", stackOperations[operationIdx]);
     }
   }
+}
+
+void pushValue(command* currentCommand, char* instruction) {
+  if (strcmp(currentCommand->memorySegment, "constant") == 0) {
+    sprintf(
+        instruction, 
+        "@%s\n"
+        "D=A\n",
+        currentCommand->value
+    );
+  } else if (strcmp(currentCommand->memorySegment, "temp") == 0) {
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=A\n"
+        "@5\n"
+        "A=D+A\n"
+        "D=M\n",
+        currentCommand->value
+    );
+  } else {
+    char memSegment[5];
+    getMemorySegment(currentCommand->memorySegment, memSegment);
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=A\n"
+        "@%s\n"
+        "A=M\n"
+        "A=D+A\n"
+        "D=M\n",
+        currentCommand->value,
+        memSegment
+    );
+  }
+}
+
+void popValue(command* currentCommand, char* instruction) {
+  if (strcmp(currentCommand->memorySegment, "temp") == 0) {
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=A\n"
+        "@5\n"
+        "D=D+A\n",
+        currentCommand->value
+    );
+  } else {
+    char memSegment[5];
+    getMemorySegment(currentCommand->memorySegment, memSegment);
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=A\n"
+        "@%s\n"
+        "D=D+M\n",
+        currentCommand->value,
+        memSegment
+    );
+  }
+}
+
+void getMemorySegment(char* memorySegment, char* buffer) {
+  int index = 0;
+  if (strcmp(memorySegment, "local") == 0) {
+    index = LCL;
+  } else if (strcmp(memorySegment, "argument") == 0) {
+    index = ARG;
+  } else if (strcmp(memorySegment, "this") == 0) {
+    index = THIS;
+  } else if (strcmp(memorySegment, "that") == 0) {
+    index = THAT;
+  } else {
+    index = TEMP;
+  }
+  strcpy(buffer, memorySegments[index]);
 }

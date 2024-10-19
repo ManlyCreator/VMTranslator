@@ -3,6 +3,16 @@
 
 #include <parser.h>
 
+// Memory Segment Indices
+#define LCL 0
+#define ARG 1
+#define THIS 2
+#define THAT 3
+#define TEMP 4
+#define PTR 5
+#define STATIC 6
+
+// Logical Operation Indices
 #define ADD 0
 #define SUB 1
 #define NEG 2
@@ -16,9 +26,11 @@
 void translateFile(FILE* dest, command* listStart);
 // Translates individual commands
 void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber);
-// Retrieves the value from a given memory segment
-int getValue(char* memorySegment, char* value);
+// Retrieves a value from the given memory segment to be pushed to the stack
+void pushValue(command* currentCommand, char* instruction);
+// Pops a value from the stack to the given memory segment at the given index
+void popValue(command* currentCommand, char* instruction);
 // Indexes into the respective memory segment of a memory segments array
-int getMemorySegment(char* memorySegment);
+void getMemorySegment(char* memorySegment, char* buffer);
 
 #endif
