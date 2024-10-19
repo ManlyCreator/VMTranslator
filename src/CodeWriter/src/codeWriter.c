@@ -4,12 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Implement memory segments
-// TODO: Implement pop
+// TODO: Implement Static memory segment
 
-char memorySegments[7][BUFSIZE] = {
-  "LCL", "ARG", "THIS", "THAT", "5" 
-};
+char memorySegments[4][BUFSIZE] = { "LCL", "ARG", "THIS", "THAT" };
+
 char stackOperations[9][BUFSIZE] = {
   // [0] ADD
   {
@@ -101,8 +99,6 @@ void translateFile(FILE* dest, command* listStart) {
 
 void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber) {
   if (strcmp(currentCommand->type, "push") == 0) {
-    // TODO: Create a function that retrieves the value 
-    // from a memory segment
     char instruction[BUFSIZE];
     pushValue(currentCommand, instruction);
     sprintf(
@@ -202,6 +198,19 @@ void pushValue(command* currentCommand, char* instruction) {
         "D=A\n",
         currentCommand->value
     );
+  } else if (strcmp(currentCommand->memorySegment, "pointer") == 0) {
+    char memSegment[5];
+    if (atoi(currentCommand->value) == 0) {
+      strcpy(memSegment, "THIS");
+    } else {
+      strcpy(memSegment, "THAT");
+    }
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=M\n",
+        memSegment
+    );
   } else if (strcmp(currentCommand->memorySegment, "temp") == 0) {
     sprintf(
         instruction,
@@ -230,7 +239,20 @@ void pushValue(command* currentCommand, char* instruction) {
 }
 
 void popValue(command* currentCommand, char* instruction) {
-  if (strcmp(currentCommand->memorySegment, "temp") == 0) {
+  if (strcmp(currentCommand->memorySegment, "pointer") == 0) {
+    char memSegment[5];
+    if (atoi(currentCommand->value) == 0) {
+      strcpy(memSegment, "THIS");
+    } else {
+      strcpy(memSegment, "THAT");
+    }
+    sprintf(
+        instruction,
+        "@%s\n"
+        "D=A\n",
+        memSegment
+    );
+  } else if (strcmp(currentCommand->memorySegment, "temp") == 0) {
     sprintf(
         instruction,
         "@%s\n"
@@ -264,8 +286,6 @@ void getMemorySegment(char* memorySegment, char* buffer) {
     index = THIS;
   } else if (strcmp(memorySegment, "that") == 0) {
     index = THAT;
-  } else {
-    index = TEMP;
   }
   strcpy(buffer, memorySegments[index]);
 }

@@ -8,9 +8,6 @@
 #define ARG 1
 #define THIS 2
 #define THAT 3
-#define TEMP 4
-#define PTR 5
-#define STATIC 6
 
 // Logical Operation Indices
 #define ADD 0
@@ -21,7 +18,6 @@
 #define OR 5
 #define NOT 6
 
-// (Function signatures subject to change)
 // Iterates through each command in the linked list
 void translateFile(FILE* dest, command* listStart);
 // Translates individual commands

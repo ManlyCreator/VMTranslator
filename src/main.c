@@ -3,8 +3,6 @@
 #include <codeWriter.h>
 #include <string.h>
 
-// TODO: Review video and make next steps
-
 int main(int argc, char** argv) {
   if (!argv[1]) {
     printf("Source Filename not Provided\n");
