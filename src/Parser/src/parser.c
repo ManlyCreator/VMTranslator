@@ -13,13 +13,13 @@ int getFileName(char* srcFileName, char* destFileName) {
     return 1;
   }
   // Copies src to dest, omitting the extension
-  while (i < len - 2) {
+  while (i < len - 3) {
     destFileName[i] = srcFileName[i];
     i++;
   }
   destFileName[i] = '\0';
   // Appends "asm" to dest
-  strcat(destFileName, "asm");
+  strcat(destFileName, ".asm");
   return 0;
 }
 

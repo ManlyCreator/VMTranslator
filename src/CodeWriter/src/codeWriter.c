@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Implement Static memory segment
+// TODO: Fix file name parsing so that the whole path name is included, omitting slashes
+
 
 char memorySegments[4][BUFSIZE] = { "LCL", "ARG", "THIS", "THAT" };
 
@@ -80,7 +81,17 @@ char stackOperations[9][BUFSIZE] = {
   }
 };
 
-void translateFile(FILE* dest, command* listStart) {
+char fileName[BUFSIZE];
+
+void translateFile(FILE* dest, char* destName, command* listStart) {
+  // Parses the file's name
+  for (int i = 0; i < strlen(destName) - 4; i++) {
+    if (destName[i] == '/') {
+      continue;
+    }
+    fileName[i] = destName[i];
+  }
+  fileName[strlen(destName) - 4] = '\0';
   command* temp = listStart;
   int instructionCounter = 0;
   while (temp->next) {
@@ -221,6 +232,13 @@ void pushValue(command* currentCommand, char* instruction) {
         "D=M\n",
         currentCommand->value
     );
+  } else if (strcmp(currentCommand->memorySegment, "static") == 0) {
+      sprintf(
+          instruction,
+          "@%s.%s\n"
+          "D=M\n",
+          fileName, currentCommand->value
+    );
   } else {
     char memSegment[5];
     getMemorySegment(currentCommand->memorySegment, memSegment);
@@ -260,6 +278,13 @@ void popValue(command* currentCommand, char* instruction) {
         "@5\n"
         "D=D+A\n",
         currentCommand->value
+    );
+  } else if (strcmp(currentCommand->memorySegment, "static") == 0) {
+    sprintf(
+        instruction,
+        "@%s.%s\n"
+        "D=A\n",
+        fileName, currentCommand->value
     );
   } else {
     char memSegment[5];

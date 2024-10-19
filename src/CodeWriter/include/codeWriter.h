@@ -19,7 +19,7 @@
 #define NOT 6
 
 // Iterates through each command in the linked list
-void translateFile(FILE* dest, command* listStart);
+void translateFile(FILE* dest, char* destName, command* listStart);
 // Translates individual commands
 void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber);
 // Retrieves a value from the given memory segment to be pushed to the stack

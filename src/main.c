@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
   //   printf("Length: %lu\n", strlen(temp->value));
   //   temp = temp->next;
   // }
-  translateFile(destFile, commandList);
+  translateFile(destFile, destFileName, commandList);
   fclose(srcFile);
   fclose(destFile);
   return 0;
