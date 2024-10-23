@@ -22,11 +22,17 @@
 void translateFile(FILE* dest, char* destName, command* listStart);
 // Translates individual commands
 void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber);
-// Retrieves a value from the given memory segment to be pushed to the stack
+// Generates an assembly instruction to push 
+// a value on to the stack depending on the 
+// respective memory segment rules
 void pushValue(command* currentCommand, char* instruction);
-// Pops a value from the stack to the given memory segment at the given index
+// Generates an assembly instruction to pop a value off the stack
+// to the respective memory segment
 void popValue(command* currentCommand, char* instruction);
-// Indexes into the respective memory segment of a memory segments array
+// Returns the assembly label for the respective memory segment
 void getMemorySegment(char* memorySegment, char* buffer);
+// Returns the index of the respective stack operation to be retrieved from
+// its array
+int getOperationIdx(command* currentCommand);
 
 #endif

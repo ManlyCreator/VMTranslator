@@ -23,7 +23,7 @@ M=D
 @SP
 M=M+1
 // pop static 8
-@Tests.8
+@StaticTest.8
 D=A
 @addr
 M=D
@@ -35,7 +35,7 @@ D=M
 A=M
 M=D
 // pop static 3
-@Tests.3
+@StaticTest.3
 D=A
 @addr
 M=D
@@ -47,7 +47,7 @@ D=M
 A=M
 M=D
 // pop static 1
-@Tests.1
+@StaticTest.1
 D=A
 @addr
 M=D
@@ -59,7 +59,7 @@ D=M
 A=M
 M=D
 // push static 3
-@Tests.3
+@StaticTest.3
 D=M
 @SP
 A=M
@@ -67,7 +67,7 @@ M=D
 @SP
 M=M+1
 // push static 1
-@Tests.1
+@StaticTest.1
 D=M
 @SP
 A=M
@@ -84,7 +84,7 @@ M=M-D
 @SP
 M=M-1
 // push static 8
-@Tests.8
+@StaticTest.8
 D=M
 @SP
 A=M

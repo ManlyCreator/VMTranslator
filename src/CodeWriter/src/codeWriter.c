@@ -84,14 +84,17 @@ char stackOperations[9][BUFSIZE] = {
 char fileName[BUFSIZE];
 
 void translateFile(FILE* dest, char* destName, command* listStart) {
-  // Parses the file's name
+  // Parses the string after the last '/' in the filepath
+  int j = 0;
   for (int i = 0; i < strlen(destName) - 4; i++) {
-    if (destName[i] == '/') {
-      continue;
+    if (destName[i - 1] == '/') {
+      j = 0;
     }
-    fileName[i] = destName[i];
+    fileName[j] = destName[i];
+    j++;
   }
-  fileName[strlen(destName) - 4] = '\0';
+  fileName[j] = '\0';
+  // Starts translating each VM instruction into Hack assembly
   command* temp = listStart;
   int instructionCounter = 0;
   while (temp->next) {
@@ -104,8 +107,11 @@ void translateFile(FILE* dest, char* destName, command* listStart) {
         "%s", 
         temp->type, temp->memorySegment, temp->value, instruction
     );
+    command* copy = temp;
     temp = temp->next;
+    free(copy);
   }
+  free(temp);
 }
 
 void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber) {
@@ -140,26 +146,11 @@ void translateCommand(char* instructionBuffer, command* currentCommand, int inst
         instruction
     );
   } else {
-    int operationIdx = 0;
-    if (strcmp(currentCommand->type, "add") == 0) {
-      operationIdx = ADD;
-    } else if (strcmp(currentCommand->type, "sub") == 0) {
-      operationIdx = SUB; 
-    } else if (strcmp(currentCommand->type, "neg") == 0) {
-      operationIdx = NEG;
-    } else if (strcmp(currentCommand->type, "eq") == 0) {
-      operationIdx = CONDITIONAL;
-    } else if (strcmp(currentCommand->type, "gt") == 0) {
-      operationIdx = CONDITIONAL;
-    } else if (strcmp(currentCommand->type, "lt") == 0) {
-      operationIdx = CONDITIONAL;
-    } else if (strcmp(currentCommand->type, "and") == 0) {
-      operationIdx = AND;
-    } else if (strcmp(currentCommand->type, "or") == 0) {
-      operationIdx = OR;
-    } else if (strcmp(currentCommand->type, "not") == 0) {
-      operationIdx = NOT;
-    }
+    // Handles logical stack operations
+    int operationIdx = getOperationIdx(currentCommand);
+    // If the operation is a conditional,
+    // then a new instruction is generated alongside
+    // a template to keep track of conditional labels
     if (operationIdx == CONDITIONAL) {
       int len = strlen(currentCommand->type);
       char operation[len];
@@ -196,6 +187,8 @@ void translateCommand(char* instructionBuffer, command* currentCommand, int inst
           instructionNumber
       );
     } else {
+      // Other stack operations are indexed from their table 
+      // and copied to the instruction
       sprintf(instructionBuffer, "%s", stackOperations[operationIdx]);
     }
   }
@@ -313,4 +306,28 @@ void getMemorySegment(char* memorySegment, char* buffer) {
     index = THAT;
   }
   strcpy(buffer, memorySegments[index]);
+}
+
+int getOperationIdx(command* currentCommand) {
+  int operationIdx = 0;
+  if (strcmp(currentCommand->type, "add") == 0) {
+    operationIdx = ADD;
+  } else if (strcmp(currentCommand->type, "sub") == 0) {
+    operationIdx = SUB; 
+  } else if (strcmp(currentCommand->type, "neg") == 0) {
+    operationIdx = NEG;
+  } else if (strcmp(currentCommand->type, "eq") == 0) {
+    operationIdx = CONDITIONAL;
+  } else if (strcmp(currentCommand->type, "gt") == 0) {
+    operationIdx = CONDITIONAL;
+  } else if (strcmp(currentCommand->type, "lt") == 0) {
+    operationIdx = CONDITIONAL;
+  } else if (strcmp(currentCommand->type, "and") == 0) {
+    operationIdx = AND;
+  } else if (strcmp(currentCommand->type, "or") == 0) {
+    operationIdx = OR;
+  } else if (strcmp(currentCommand->type, "not") == 0) {
+    operationIdx = NOT;
+  }
+  return operationIdx;
 }
