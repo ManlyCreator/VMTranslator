@@ -1,106 +1,22 @@
+#include "parser.h"
 #include <codeWriter.h>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// TODO: Fix file name parsing so that the whole path name is included, omitting slashes
-
-
-char memorySegments[4][BUFSIZE] = { "LCL", "ARG", "THIS", "THAT" };
-
-char stackOperations[9][BUFSIZE] = {
-  // [0] ADD
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "M=D+M\n"
-    "@SP\n"
-    "M=M-1\n"
-  },
-  // [1] SUB
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "M=M-D\n"
-    "@SP\n"
-    "M=M-1\n"
-  },
-  // [2] NEG
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=-M\n"
-  },
-  // [3] CONDITIONAL
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=M-D\n"
-  },
-  // [4] AND
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=D&M\n"
-    "M=D\n"
-    "@SP\n"
-    "M=M-1\n"
-  },
-  // [5] OR
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "D=M\n"
-    "A=A-1\n"
-    "D=D|M\n"
-    "M=D\n"
-    "@SP\n"
-    "M=M-1\n"
-  },
-  // [6] NOT
-  {
-    "@SP\n"
-    "A=M\n"
-    "A=A-1\n"
-    "M=!M\n"
-  }
-};
-
 char fileName[BUFSIZE];
+int condtionalLabelCounter = 0;
 
 void translateFile(FILE* dest, char* destName, command* listStart) {
-  // Parses the string after the last '/' in the filepath
-  int j = 0;
-  for (int i = 0; i < strlen(destName) - 4; i++) {
-    if (destName[i - 1] == '/') {
-      j = 0;
-    }
-    fileName[j] = destName[i];
-    j++;
-  }
-  fileName[j] = '\0';
+  // Extracts just the file name from the path and stores it in
+  // fileName
+  stripFileName(destName, fileName);
   // Starts translating each VM instruction into Hack assembly
   command* temp = listStart;
-  int instructionCounter = 0;
   while (temp->next) {
-    instructionCounter++;
     char instruction[BUFSIZE];
-    translateCommand(instruction, temp, instructionCounter);
+    translateCommand(instruction, temp);
     fprintf(
         dest,
         "// %s %s %s\n"
@@ -114,7 +30,7 @@ void translateFile(FILE* dest, char* destName, command* listStart) {
   free(temp);
 }
 
-void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber) {
+void translateCommand(char* instructionBuffer, command* currentCommand) {
   if (strcmp(currentCommand->type, "push") == 0) {
     char instruction[BUFSIZE];
     pushValue(currentCommand, instruction);
@@ -161,31 +77,32 @@ void translateCommand(char* instructionBuffer, command* currentCommand, int inst
       sprintf(
           instructionBuffer,
           "%s"
-          "@%s%d\n"
+          "@_%s%d_\n"
           "D;J%s\n"
           "@SP\n"
           "M=M-1\n"
           "A=M\n"
           "A=A-1\n"
           "M=0\n"
-          "@END%d\n"
+          "@_END%d_\n"
           "0;JMP\n"
-          "(%s%d)\n"
+          "(_%s%d_)\n"
           "@SP\n"
           "M=M-1\n"
           "A=M\n"
           "A=A-1\n"
           "M=-1\n"
-          "(END%d)\n",
+          "(_END%d_)\n",
           stackOperations[operationIdx],
           operation,
-          instructionNumber,
+          condtionalLabelCounter,
           operation,
-          instructionNumber,
+          condtionalLabelCounter,
           operation,
-          instructionNumber,
-          instructionNumber
+          condtionalLabelCounter,
+          condtionalLabelCounter
       );
+      condtionalLabelCounter++;
     } else {
       // Other stack operations are indexed from their table 
       // and copied to the instruction

@@ -18,10 +18,83 @@
 #define OR 5
 #define NOT 6
 
+static char memorySegments[4][BUFSIZE] = { "LCL", "ARG", "THIS", "THAT" };
+static char stackOperations[9][BUFSIZE] = {
+  // [0] ADD
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "M=D+M\n"
+    "@SP\n"
+    "M=M-1\n"
+  },
+  // [1] SUB
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "M=M-D\n"
+    "@SP\n"
+    "M=M-1\n"
+  },
+  // [2] NEG
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=-M\n"
+  },
+  // [3] CONDITIONAL
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "D=M-D\n"
+  },
+  // [4] AND
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "D=D&M\n"
+    "M=D\n"
+    "@SP\n"
+    "M=M-1\n"
+  },
+  // [5] OR
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "D=M\n"
+    "A=A-1\n"
+    "D=D|M\n"
+    "M=D\n"
+    "@SP\n"
+    "M=M-1\n"
+  },
+  // [6] NOT
+  {
+    "@SP\n"
+    "A=M\n"
+    "A=A-1\n"
+    "M=!M\n"
+  }
+};
+
 // Iterates through each command in the linked list
 void translateFile(FILE* dest, char* destName, command* listStart);
 // Translates individual commands
-void translateCommand(char* instructionBuffer, command* currentCommand, int instructionNumber);
+void translateCommand(char* instructionBuffer, command* currentCommand);
 // Generates an assembly instruction to push 
 // a value on to the stack depending on the 
 // respective memory segment rules

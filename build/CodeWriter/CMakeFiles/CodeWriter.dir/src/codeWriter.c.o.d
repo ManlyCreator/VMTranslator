@@ -1,7 +1,6 @@
 CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: \
  /home/rami/CProjects/VMTranslator/src/CodeWriter/src/codeWriter.c \
  /usr/include/stdc-predef.h \
- /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h \
  /home/rami/CProjects/VMTranslator/src/CodeWriter/../Parser/include/parser.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -26,8 +25,9 @@ CodeWriter/CMakeFiles/CodeWriter.dir/src/codeWriter.c.o: \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
- /usr/include/x86_64-linux-gnu/bits/floatn-common.h /usr/include/ctype.h \
- /usr/include/x86_64-linux-gnu/bits/endian.h \
+ /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+ /home/rami/CProjects/VMTranslator/src/CodeWriter/include/codeWriter.h \
+ /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endianness.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \

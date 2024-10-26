@@ -23,6 +23,18 @@ int getFileName(char* srcFileName, char* destFileName) {
   return 0;
 }
 
+void stripFileName(char* fileName, char* strippedFileName) {
+  int j = 0;
+  for (int i = 0; i < strlen(fileName) - 4; i++) {
+    if (fileName[i - 1] == '/') {
+      j = 0;
+    }
+    strippedFileName[j] = fileName[i];
+    j++;
+  }
+  strippedFileName[j] = '\0';
+}
+
 void parseFile(FILE* src, command** listStart) {
   char line[BUFSIZE];
   command* listPtr = malloc(sizeof(command));
