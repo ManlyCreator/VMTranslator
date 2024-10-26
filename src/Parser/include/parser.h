@@ -15,9 +15,11 @@ typedef struct command {
   struct command* next;
 } command;
 
-// Parses the provided filename and appends .asm
+// Parses the provided file name and appends .asm
 // If 0 is not returned then name parsing failed
 int getFileName(char* srcFileName, char* destFileName);
+// Extracts just the file name from its path
+void stripFileName(char* fileName, char* strippedFileName);
 // Breaks each line into its respective components
 void parseFile(FILE* src, command** listStart);
 // Strips lines of leading and trailing whitespace and comments
